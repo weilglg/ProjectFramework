@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ProjectFramework</string>
+    <string name="base_title_img_left_desc">标题栏左侧图片</string>
+    <string name="base_title_img_right_desc">标题栏右侧图片</string>
+</resources>

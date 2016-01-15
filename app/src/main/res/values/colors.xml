@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="color_title_background">#ff5000</color>
+    <color name="color_title_txt">#fff</color>
+    <color name="viewpager_margin_color">#ffffff</color>
+    <color name="base_home_tab_background">#F7F8F8</color>
+    <color name="base_home_tab_textNormal">#8C8C8C</color>
+    <color name="base_home_tab_onTouchColor">#AA9C9C9C</color>
+    <color name="base_home_tab_textSelected">#ff5000</color>
+</resources>

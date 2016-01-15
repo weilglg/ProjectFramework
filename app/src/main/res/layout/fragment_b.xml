@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/fragment_b_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/fragment_b_indicator" />
+
+    <com.wll.main.widget.ViewPagerIndicatorView
+        android:id="@+id/fragment_b_indicator"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/base_home_tab_background"
+        app:tag_onTouchBackgroundColor="@color/base_home_tab_onTouchColor"
+        app:tag_textColorNormal="@color/base_home_tab_textNormal"
+        app:tag_textColorSelected="@color/base_home_tab_textSelected"
+        app:tag_textSizeNormal="18sp"
+        app:tag_footerLineVisibility="true"
+        app:tag_textPaddingTop="10dp"
+        app:tag_textPaddingBottom="10dp"/>
+</RelativeLayout>
