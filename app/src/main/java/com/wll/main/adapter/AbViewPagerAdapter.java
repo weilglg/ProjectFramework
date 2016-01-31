@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * © 2012 amsoft.cn
  * 名称：AbViewPagerAdapter.java 
@@ -33,7 +34,7 @@ import java.util.HashMap;
  * @version v1.0
  * @date：2013-11-28 上午10:58:26
  */
-public class AbViewPagerAdapter extends PagerAdapter{
+public class AbViewPagerAdapter extends PagerAdapter {
 	
 	/** The m context. */
 	private Context mContext;

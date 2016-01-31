@@ -59,6 +59,7 @@ public class ViewPagerIndicatorView extends LinearLayout implements
      * 选项卡普通状态下的字体颜色
      */
     private int mTextColorNormal;
+
     /**
      * 选项卡被选中状态下的字体颜色
      */
@@ -80,10 +81,12 @@ public class ViewPagerIndicatorView extends LinearLayout implements
      * 滚动条的高度
      */
     private float mFooterLineHeight;
+
     /**
      * 滚动条所占的Tab宽度的比值
      */
     private int mFooterLineWidthRatio = 1;
+
     /**
      * 是否显示滑动条
      */
@@ -98,14 +101,17 @@ public class ViewPagerIndicatorView extends LinearLayout implements
      * 是否显示tab之间的竖线
      */
     private boolean mIsShowVerticalLine;
+
     /**
      * Tab之间的数显的宽度
      */
     private float mVerticalLineWidth = 0;
+
     /**
      * Tab之间竖线的高度占总布局高度的比值
      */
     private int mVerticalLineHeightRatio = 1;
+
     /**
      * Tab之间竖线的颜色
      */
@@ -361,7 +367,7 @@ public class ViewPagerIndicatorView extends LinearLayout implements
         removeAllViews();
         this.mViewPager = mViewPager;
         this.mTabs = tabs;
-        if (mTabs.size() > 0){
+        if (mTabs.size() > 0) {
             this.mTotal = tabs.size();
         }
         for (int i = 0; mTotal > i; i++) {

@@ -27,9 +27,9 @@ public class TabInfo implements Parcelable {
         this(id, name, 0, clazz);
     }
 
-    public TabInfo(int id, String name, int iconid,
+    public TabInfo(int id, String name, int iconId,
                    Class<? extends Fragment> clazz) {
-        this(id, name, iconid, iconid, clazz);
+        this(id, name, iconId, iconId, clazz);
     }
 
     public TabInfo(int id, String name, int normalIcon, int selectedIcon,

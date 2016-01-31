@@ -158,8 +158,8 @@ public abstract class BaseIndicatorFragment extends BaseFragment implements View
             super(id, name, clazz);
         }
 
-        public TabInfo(int id, String name, int iconid, Class<? extends Fragment> clazz) {
-            super(id, name, iconid, clazz);
+        public TabInfo(int id, String name, int iconId, Class<? extends Fragment> clazz) {
+            super(id, name, iconId, clazz);
         }
 
         public TabInfo(int id, String name, int normalIcon, int selectedIcon, Class<? extends Fragment> clazz) {
@@ -176,6 +176,16 @@ public abstract class BaseIndicatorFragment extends BaseFragment implements View
             onInitFragmentEnd(pos, fragment);
             return fragment;
         }
+
+        public final Creator<TabInfo> CREATOR = new Creator<TabInfo>() {
+            public TabInfo createFromParcel(Parcel p) {
+                return new TabInfo(p);
+            }
+
+            public TabInfo[] newArray(int size) {
+                return new TabInfo[size];
+            }
+        };
     }
 
 }

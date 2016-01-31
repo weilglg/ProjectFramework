@@ -42,6 +42,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * © 2012 amsoft.cn 名称：AbPlayView 描述：可播放显示的View.
  *

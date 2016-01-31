@@ -70,7 +70,7 @@ public class MainActivity extends BaseActivity {
         return new ImageCycleView.ImageCycleViewListener() {
             @Override
             public void displayImage(String imageURL, ImageView imageView) {
-                ImageLoader.getInstance().displayImage(imageURL,imageView);
+                ImageLoader.getInstance().displayImage(imageURL, imageView);
             }
 
             @Override

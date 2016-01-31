@@ -25,6 +25,7 @@ import android.widget.ListView;
 import android.widget.ScrollView;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * © 2012 amsoft.cn
  * 名称：AbInnerViewPager.java 

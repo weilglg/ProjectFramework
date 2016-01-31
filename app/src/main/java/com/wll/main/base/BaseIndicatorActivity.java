@@ -195,5 +195,15 @@ public abstract class BaseIndicatorActivity extends
             onInitFragmentEnd(pos, fragment);
             return fragment;
         }
+
+        public final Creator<TabInfo> CREATOR = new Creator<TabInfo>() {
+            public TabInfo createFromParcel(Parcel p) {
+                return new TabInfo(p);
+            }
+
+            public TabInfo[] newArray(int size) {
+                return new TabInfo[size];
+            }
+        };
     }
 }

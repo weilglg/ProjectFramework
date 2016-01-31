@@ -14,13 +14,22 @@
         android:layout_below="@id/id_btn"
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/id_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="50dip"
+            android:textSize="30sp"
+            android:gravity="center"
             android:text="测试" />
+
+        <com.wll.main.widget.TranslationView
+            android:layout_width="wrap_content"
+            android:layout_height="50dip"
+            android:textSize="30sp"
+            android:text="测试滑动"/>
 
     </LinearLayout>
 

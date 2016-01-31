@@ -517,7 +517,7 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
         //根布局
         View view = findViewById(R.id.base_main_layout);
         //设置手机自身的状态栏状态
-        setTranslucentStatus(view,R.color.color_title_background);
+        setTranslucentStatus(view, R.color.color_title_background);
 
         //左侧按钮布局
         leftLayout = findViewById(R.id.base_title_left_layout);
