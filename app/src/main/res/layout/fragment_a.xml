@@ -1,21 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.wll.main.widget.HorizontalInnerScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_a_observableScrollView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/a_root_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"></LinearLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Fragment A"
-        android:textColor="#000"
-        android:textSize="30sp" />
-</LinearLayout>
+        <LinearLayout
+            android:id="@+id/a_root_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"></LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Fragment A"
+            android:textColor="#000"
+            android:textSize="30sp"/>
+
+        <com.wll.main.widget.NoScrollListView
+            android:id="@+id/fragment_a_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </com.wll.main.widget.NoScrollListView>
+
+
+    </LinearLayout>
+</com.wll.main.widget.HorizontalInnerScrollView>

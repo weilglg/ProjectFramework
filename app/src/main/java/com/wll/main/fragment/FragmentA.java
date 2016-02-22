@@ -1,20 +1,26 @@
 package com.wll.main.fragment;
 
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.wll.main.R;
+import com.wll.main.activity.TagFlowLayoutActivity;
 import com.wll.main.base.BaseFragment;
 import com.wll.main.widget.ImageCycleView;
+import com.wll.main.widget.NoScrollListView;
 
 import java.util.ArrayList;
 
 /**
  * Created by wll on 2015/10/29.
  */
-public class FragmentA extends BaseFragment {
+public class FragmentA extends BaseFragment implements AdapterView.OnItemClickListener {
 
+    private NoScrollListView mListView;
+    private String[] array;
 
     @Override
     protected int getViewResId() {
@@ -23,12 +29,12 @@ public class FragmentA extends BaseFragment {
 
     @Override
     protected void initViews(View v) {
-
+        mListView = (NoScrollListView) v.findViewById(R.id.fragment_a_listview);
     }
 
     @Override
     protected void initListener() {
-
+        mListView.setOnItemClickListener(this);
     }
 
     @Override
@@ -76,12 +82,22 @@ public class FragmentA extends BaseFragment {
     @Override
     protected void loaderData() {
         if (!mHasLoadedOnce) {
+            array = getResources().getStringArray(R.array.views_name);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout
+                    .simple_list_item_1, array);
+            mListView.setAdapter(adapter);
             mHasLoadedOnce = true;
         } else {
 
         }
-
-
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        switch (position) {
+            case 0:
+                showActivity(TagFlowLayoutActivity.class);
+                break;
+        }
+    }
 }

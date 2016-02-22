@@ -18,7 +18,10 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-public class TagFlawLayout extends FlowLayout implements TagAdapter.OnDataChangedListener {
+/**
+ * Created by WLL on 2016/2/22.
+ */
+public class TagFlowLayout extends FlowLayout implements TagAdapter.OnDataChangedListener {
 
 
     private static final String KEY_DEFAULT = "KEY_DEFAULT";
@@ -36,7 +39,7 @@ public class TagFlawLayout extends FlowLayout implements TagAdapter.OnDataChange
      */
     private int mSelectedMax = -1;
 
-    private static final String TAG = TagFlawLayout.class.getSimpleName();
+    private static final String TAG = TagFlowLayout.class.getSimpleName();
     /**
      * 设置选中的Tag的下标
      */
@@ -83,20 +86,20 @@ public class TagFlawLayout extends FlowLayout implements TagAdapter.OnDataChange
         return new HashSet<Integer>(mSelectedViewPosition);
     }
 
-    public TagFlawLayout(Context context) {
+    public TagFlowLayout(Context context) {
         this(context, null);
     }
 
-    public TagFlawLayout(Context context, AttributeSet attrs) {
+    public TagFlowLayout(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public TagFlawLayout(Context context, AttributeSet attrs, int defStyle) {
+    public TagFlowLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         //获取自定义的属性
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.TagFlawLayout);
-        mAutoSelectEffect = typedArray.getBoolean(R.styleable.TagFlawLayout_auto_select_effect, true);
-        mSelectedMax = typedArray.getInteger(R.styleable.TagFlawLayout_max_select, -1);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.TagFlowLayout);
+        mAutoSelectEffect = typedArray.getBoolean(R.styleable.TagFlowLayout_auto_select_effect, true);
+        mSelectedMax = typedArray.getInteger(R.styleable.TagFlowLayout_max_select, -1);
         typedArray.recycle();
 
         if (mAutoSelectEffect) {
@@ -333,5 +336,4 @@ public class TagFlawLayout extends FlowLayout implements TagAdapter.OnDataChange
 
         void onSelectedAllPosition(Set<Integer> selectedPositionSet);
     }
-
 }

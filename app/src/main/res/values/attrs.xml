@@ -23,43 +23,47 @@
         <attr name="timerTask" format="integer"></attr>
     </declare-styleable>
 
-    <declare-styleable name="TitleIndicator">
+    <declare-styleable name="TabIndicator">
 
         <!-- 选中时字体的颜色 -->
-        <attr name="tag_textColorNormal" format="color|reference" />
+        <attr name="indicator_textColorNormal" format="color|reference" />
         <!-- 未选中时字体的颜色 -->
-        <attr name="tag_textColorSelected" format="color|reference" />
+        <attr name="indicator_textColorSelected" format="color|reference" />
         <!-- 字体离顶部的距离 -->
-        <attr name="tag_textPaddingTop" format="dimension" />
+        <attr name="indicator_textPaddingTop" format="dimension" />
         <!-- 字体离底部的距离 -->
-        <attr name="tag_textPaddingBottom" format="dimension" />
+        <attr name="indicator_textPaddingBottom" format="dimension" />
         <!-- 选中时字体的大小 -->
-        <attr name="tag_textSizeNormal" format="dimension" />
+        <attr name="indicator_textSizeNormal" format="dimension" />
         <!-- 未选中时字体的大小 -->
-        <attr name="tag_textSizeSelected" format="dimension" />
+        <attr name="indicator_textSizeSelected" format="dimension" />
+        <!-- 下划线的颜色 -->
+        <attr name="indicator_underlineColor" format="color|reference" />
+        <!-- 下划线的显示状态 -->
+        <attr name="indicator_underlineVisibility" format="boolean" />
         <!-- 滑动条的高度 -->
-        <attr name="tag_footerLineHeight" format="dimension" />
+        <attr name="indicator_footerLineHeight" format="dimension" />
         <!-- 滑动条的颜色 -->
-        <attr name="tag_footerColor" format="color" />
+        <attr name="indicator_footerColor" format="color|reference" />
         <!-- 滑动条的显示状态 -->
-        <attr name="tag_footerLineVisibility" format="boolean"></attr>
+        <attr name="indicator_footerLineVisibility" format="boolean" />
         <!-- 滑动条所占Tab宽度的比值（2-9） -->
-        <attr name="tag_footerLineWidthRatio" format="integer"></attr>
+        <attr name="indicator_footerLineWidthRatio" format="integer" />
         <!-- Tab被点击时的背景颜色 -->
-        <attr name="tag_onTouchBackgroundColor" format="color|reference" />
+        <attr name="indicator_onTouchBackgroundColor" format="color|reference" />
         <!-- Tab选中时的背景颜色 -->
-        <attr name="tag_tabSelectedColor" format="color|reference" />
+        <attr name="indicator_tabSelectedColor" format="color|reference" />
         <!-- Tab之间竖线的宽度 -->
-        <attr name="tag_verticalLineWidth" format="dimension" />
+        <attr name="indicator_verticalLineWidth" format="dimension" />
         <!-- Tab之间竖线的显示状态 -->
-        <attr name="tag_verticalLineVisibility" format="boolean"></attr>
+        <attr name="indicator_verticalLineVisibility" format="boolean" />
         <!-- Tab之间竖线的颜色 -->
-        <attr name="tag_verticalLineColor" format="color|reference"></attr>
+        <attr name="indicator_verticalLineColor" format="color|reference" />
         <!-- Tab之间竖线高度所占总高度的比值（2-9） -->
-        <attr name="tag_verticalLineHeightRatio" format="integer"></attr>
+        <attr name="indicator_verticalLineHeightRatio" format="integer" />
     </declare-styleable>
 
-    <declare-styleable name="TagFlawLayout">
+    <declare-styleable name="TagFlowLayout">
         <!-- 是否开启默认的选中效果，即为selector中设置的效果，默认为true；如果设置为false，则无选中效果，需要自己在回调中处理-->
         <attr name="auto_select_effect" format="boolean"></attr>
         <!-- 设置可以选中的Tag的数量-->

@@ -106,7 +106,8 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
     public void setContentView(int layoutResID) {
         View contentView = null;
         boolean isLoadSuccess = false;
-        if (layoutResID == R.layout.base_title_layout || !isUsedBaseTitleLayout()) { // 当布局的resId跟根布局文件的Id相同或者需要装载统一的子布局时做一些共有的操作
+        if (layoutResID == R.layout.base_title_layout || !isUsedBaseTitleLayout()) { //
+            // 当布局的resId跟根布局文件的Id相同或者需要装载统一的子布局时做一些共有的操作
             contentView = inflateView(layoutResID);
             //获取需要组装广告布局或者网络提示布局的控件
             LinearLayout bodyLayout = null;
@@ -186,7 +187,8 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
             if (!isFirstLoadBanner) {
                 ArrayList<String> list = getBannerUrlList();
                 ImageCycleView.ImageCycleViewListener imageCycleViewListener = getImageCycleViewListener();
-                bannerLayout.setImageResources(list, imageCycleViewListener, getAdIndicatorType(), getAdIndicatorPosition());
+                bannerLayout.setImageResources(list, imageCycleViewListener, getAdIndicatorType(),
+                        getAdIndicatorPosition());
                 isFirstLoadBanner = true;
             } else {
                 bannerLayout.startImageCycle();
@@ -264,7 +266,9 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
     }
 
     /**
-     * 要给自定义的布局装载广告布局或者网络布局时，需要重写此方法。同时需要重写getAddViewIndex()
+     * 要给自定义的布局装载广告布局或者网络布局时，需要重写此方法。<p/>
+     * 如果需要装载广告布局需要重写{@link #isLoadBannerLayout()}，同时需要重写{@link #getAddViewIndex()}<p/>
+     * 如果需要装载网络布局需要重写{@link #isLoadNetworkLayout()}
      */
     protected int getLoadNetLayoutOrAdLayoutId() {
         return 0;
@@ -488,7 +492,8 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
     protected void hideSoftKeyboard() {
         if (this.getWindow().getAttributes().softInputMode != WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN) {
             if (this.getCurrentFocus() != null) {
-                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context
+                        .INPUT_METHOD_SERVICE);
                 inputMethodManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(),
                         InputMethodManager.HIDE_NOT_ALWAYS);
             }

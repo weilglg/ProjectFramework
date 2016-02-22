@@ -13,7 +13,7 @@ import android.view.Window;
 
 import com.wll.main.R;
 import com.wll.main.adapter.IndicatorTabPageAdapter;
-import com.wll.main.widget.ViewPagerIndicatorView;
+import com.wll.main.widget.TabIndicatorView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +38,7 @@ public abstract class BaseIndicatorActivity extends
     protected ViewPager mPager;
 
     // 选项卡控件
-    protected ViewPagerIndicatorView mIndicator;
+    protected TabIndicatorView mIndicator;
 
 
     @Override
@@ -84,7 +84,7 @@ public abstract class BaseIndicatorActivity extends
         // 设置ViewPager内部页面间距的Drawable
         mPager.setPageMarginDrawable(R.color.viewpager_margin_color);
 
-        mIndicator = (ViewPagerIndicatorView) findViewById(getViewPagerIndicatorViewId());
+        mIndicator = (TabIndicatorView) findViewById(getViewPagerIndicatorViewId());
         mIndicator.init(mCurrentTab, mTabs, mPager);
 
         mPager.setCurrentItem(mCurrentTab, false);
