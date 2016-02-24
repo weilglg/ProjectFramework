@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.wll.main">
+          package="com.wll.main">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
@@ -16,22 +16,29 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="debugMode"
-            android:value="true" />
+            android:value="true"/>
         <meta-data
             android:name="directory"
-            android:value="imageCache" />
+            android:value="imageCache"/>
 
-        <!--<activity android:name=".activity.BaseHomeActivity" >-->
+        <!-- <activity android:name=".activity.BaseHomeActivity" > -->
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".base.BaseActivity" />
-        <activity android:name=".activity.BaseHomeActivity" />
-        <activity android:name=".activity.TagFlowLayoutActivity" />
+        <activity android:name=".base.BaseActivity"/>
+        <activity android:name=".activity.BaseHomeActivity"/>
+        <activity android:name=".activity.TagFlowLayoutActivity"/>
+        <activity android:name=".activity.FlowTagLayoutActivity"/>
+        <activity android:name=".activity.ObservableScrollViewActivity">
+        </activity>
+        <activity android:name=".activity.ZoomImageViewActivity">
+        </activity>
+        <activity android:name=".activity.SelectPictureActivity">
+        </activity>
     </application>
 
 </manifest>

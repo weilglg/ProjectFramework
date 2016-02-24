@@ -20,10 +20,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 瀑布流标签
+ * 带删除按钮的瀑布流标签
  */
 
-public class FlowTagLayoutView extends ViewGroup implements OnClickListener,
+public class WaterfallWithDeleteView extends ViewGroup implements OnClickListener,
         OnLongClickListener {
 
     public static final int HORIZONTAL = 0;
@@ -35,20 +35,20 @@ public class FlowTagLayoutView extends ViewGroup implements OnClickListener,
     private List<Tag> mTags = new ArrayList<Tag>();
     private OnTagClickListener onTagClickListener;
 
-    public FlowTagLayoutView(Context context) {
+    public WaterfallWithDeleteView(Context context) {
         super(context);
 
         this.readStyleParameters(context, null);
     }
 
-    public FlowTagLayoutView(Context context, AttributeSet attributeSet) {
+    public WaterfallWithDeleteView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
 
         this.readStyleParameters(context, attributeSet);
     }
 
-    public FlowTagLayoutView(Context context, AttributeSet attributeSet,
-                             int defStyle) {
+    public WaterfallWithDeleteView(Context context, AttributeSet attributeSet,
+                                   int defStyle) {
         super(context, attributeSet, defStyle);
 
         this.readStyleParameters(context, attributeSet);

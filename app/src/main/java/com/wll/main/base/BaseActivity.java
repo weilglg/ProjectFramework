@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.os.Message;
 import android.provider.Settings;
+import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,6 +37,7 @@ import java.util.ArrayList;
 public class BaseActivity extends FragmentActivity implements View.OnClickListener {
 
 
+    private static final String ACTIVITY_BUNDLE = "ACTIVITY_BUNDLE";
     /**
      * 左侧按钮
      */
@@ -72,7 +74,7 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
     /**
      * 整个title布局
      */
-    private View titleLayout;
+    protected View titleLayout;
 
     private boolean isFirstLoadBanner;
 
@@ -248,7 +250,8 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
     }
 
     /**
-     * 是否需要加载广告布局，子类需要加载时重写该方法返回true
+     * 是否需要加载广告布局，子类需要加载时重写该方法返回true<p/>
+     * 需要重写{@link #getLoadNetLayoutOrAdLayoutId()}
      *
      * @return 如果需要加载网络布局就返回true，不需要就返回false
      */
@@ -257,7 +260,8 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
     }
 
     /**
-     * 是否需要加载网络布局，子类重写即可
+     * 是否需要加载网络布局，子类重写即可<p/>
+     * 需要重写{@link #getLoadNetLayoutOrAdLayoutId()}
      *
      * @return 如果需要加载网络布局就返回true，不需要就返回false
      */
@@ -470,20 +474,33 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
         Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
     }
 
-    /**
-     * 跳转Activity
-     */
-    public void showActivity(Class<? extends BaseActivity> clazz) {
-        Intent intent = new Intent();
-        intent.setClass(this, clazz);
+    protected void toActivity(Class<?> cls) {
+        toActivity(this, cls, null);
+    }
+
+    protected void toActivity(Class<?> cls, Bundle bundle) {
+        toActivity(this, cls, bundle);
+    }
+
+    protected void toActivity(Context context, Class<?> cls, Bundle bundle) {
+        Intent intent = new Intent(context, cls);
+        intent.putExtra(ACTIVITY_BUNDLE, bundle);
         startActivity(intent);
     }
 
-    public void showActivity(Class<? extends BaseActivity> clazz, Bundle bundle) {
-        Intent intent = new Intent();
-        intent.setClass(this, clazz);
-        intent.putExtras(bundle);
-        startActivity(intent);
+    /**
+     * 获取回调的start
+     */
+    protected void toActivityForResult(Context context, Class<?> cls,
+                                       int requestCode) {
+        toActivityForResult(context, cls, requestCode, null);
+    }
+
+    protected void toActivityForResult(Context context, Class<?> cls,
+                                       int requestCode, @Nullable Bundle options) {
+        Intent intent = new Intent(context, cls);
+        intent.putExtra(ACTIVITY_BUNDLE, options);
+        startActivityForResult(intent, requestCode);
     }
 
     /**
@@ -500,7 +517,7 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
         }
     }
 
-    //初始化一些基本控件
+    //初始化一些基本控件,子类重写时需要调用super.initListener()
     protected void initListener() {
         if (leftLayout != null) {
             leftLayout.setOnClickListener(this);
@@ -515,7 +532,7 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
     }
 
     /**
-     * 初始化控件
+     * 初始化控件,子类重写时需要调用super.initViews()
      */
     protected void initViews() {
 
@@ -547,6 +564,20 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
         if (isLoadBannerLayout()) {
             bannerLayout = (ImageCycleView) findViewById(R.id.banner_AbSlidingPlayView);
         }
+    }
+
+    /**
+     * 设置广告栏的高度
+     *
+     * @param height
+     */
+    protected void setBannerHeight(int height) {
+        if (bannerLayout != null) {
+            ViewGroup.LayoutParams layoutParams = bannerLayout.getLayoutParams();
+            layoutParams.height = height;
+            bannerLayout.setLayoutParams(layoutParams);
+        }
+
     }
 
 
@@ -583,6 +614,9 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
     // 设置系统状态栏
     @SuppressLint("InlinedApi")
     protected void setTranslucentStatus(View view, int resId) {
+        if (view == null){
+            return;
+        }
         // 判断版本是4.4以上
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Window win = getWindow();

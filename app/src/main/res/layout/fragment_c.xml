@@ -5,11 +5,16 @@
     android:id="@+id/a_root_layout"
     android:orientation="vertical">
 
-    <TextView
+    <Button
+        android:id="@+id/id_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Fragment C"
+        android:text="选择图片"
         android:textColor="#000"
         android:textSize="30sp" />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/zoom_image_view_activity_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
 </LinearLayout>

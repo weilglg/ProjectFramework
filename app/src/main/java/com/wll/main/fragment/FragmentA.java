@@ -7,7 +7,10 @@ import android.widget.ImageView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.wll.main.R;
+import com.wll.main.activity.FlowTagLayoutActivity;
+import com.wll.main.activity.ObservableScrollViewActivity;
 import com.wll.main.activity.TagFlowLayoutActivity;
+import com.wll.main.activity.ZoomImageViewActivity;
 import com.wll.main.base.BaseFragment;
 import com.wll.main.widget.ImageCycleView;
 import com.wll.main.widget.NoScrollListView;
@@ -96,7 +99,16 @@ public class FragmentA extends BaseFragment implements AdapterView.OnItemClickLi
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position) {
             case 0:
-                showActivity(TagFlowLayoutActivity.class);
+                toActivity(TagFlowLayoutActivity.class);
+                break;
+            case 1:
+                toActivity(ObservableScrollViewActivity.class);
+                break;
+            case 2:
+                toActivity(FlowTagLayoutActivity.class);
+                break;
+            case 3:
+                toActivity(ZoomImageViewActivity.class);
                 break;
         }
     }

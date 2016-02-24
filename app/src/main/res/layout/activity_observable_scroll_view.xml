@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ObservableScrollViewActivity">
+
+    <com.wll.main.widget.ObservableScrollView
+        android:id="@+id/observableScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/obserable_scroll_view_content_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/flower"/>
+
+            <com.wll.main.widget.NoScrollListView
+                android:id="@+id/obserable_scroll_view_listView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></com.wll.main.widget.NoScrollListView>
+
+        </LinearLayout>
+    </com.wll.main.widget.ObservableScrollView>
+
+    <include
+        layout="@layout/base_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

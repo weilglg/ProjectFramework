@@ -1,6 +1,7 @@
 package com.wll.main.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -33,6 +34,7 @@ public class TagFlowLayoutActivity extends BaseActivity implements TagFlowLayout
     protected void initViews() {
         super.initViews();
         setMainTitleContent("TagFlowLayout");
+        setLeftLayoutDrawable(R.drawable.icon_return);
         tagFlowLayout = (TagFlowLayout) findViewById(R.id.tagFlowLayout);
     }
 
@@ -61,17 +63,18 @@ public class TagFlowLayoutActivity extends BaseActivity implements TagFlowLayout
 
     @Override
     public boolean onTagClick(View view, int position, FlowLayout parent) {
+        Log.e("TAG", "-->>onTagClick : "+ mTagDatas[position]);
         return false;
     }
 
     @Override
     public void onItemSelected(Integer selectedPosition) {
-
+        Log.e("TAG","-->>onItemSelected : "+ mTagDatas[selectedPosition]);
     }
 
     @Override
     public void onSelectedAllPosition(Set<Integer> selectedPositionSet) {
-
+        Log.e("TAG","-->>onSelectedAllPosition : "+ selectedPositionSet.size());
     }
 
 
@@ -81,13 +84,11 @@ public class TagFlowLayoutActivity extends BaseActivity implements TagFlowLayout
             super(mTagDatas);
         }
 
-
         @Override
         public View getView(FlowLayout parent, int position, String s) {
-            View view = inflateView(R.layout.flowlayout_item);
-            TextView tv = (TextView) view.findViewById(R.id.flowtag_item_tv);
+            TextView tv = (TextView) inflateView(R.layout.tag_tv, parent);
             tv.setText(getItem(position));
-            return view;
+            return tv;
         }
     }
 }

@@ -23,6 +23,8 @@ import java.util.ArrayList;
  */
 public abstract class BaseFragment extends Fragment {
 
+    protected static final String ACTIVITY_BUNDLE = "ACTIVITY_BUNDLE";
+
     /**
      * Fragment绑定的布局文件资源ID
      */
@@ -211,22 +213,35 @@ public abstract class BaseFragment extends Fragment {
         Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
     }
 
-    /**
-     * 跳转Activity
-     */
-    protected void showActivity(Class<? extends BaseActivity> clazz, Bundle extras) {
-        Intent intent = new Intent(getActivity(), clazz);
-        intent.putExtras(extras);
+    protected void toActivity(Class<?> cls) {
+        toActivity(getActivity(), cls, null);
+    }
+
+    protected void toActivity(Class<?> cls, Bundle bundle) {
+        toActivity(getActivity(), cls, bundle);
+    }
+
+    protected void toActivity(Context context, Class<?> cls, Bundle bundle) {
+        Intent intent = new Intent(context, cls);
+        intent.putExtra(ACTIVITY_BUNDLE, bundle);
         startActivity(intent);
     }
 
     /**
-     * 跳转Activity
+     * 获取回调的start
      */
-    protected void showActivity(Class<? extends BaseActivity> clazz) {
-        Intent intent = new Intent(getActivity(), clazz);
-        startActivity(intent);
+    protected void toActivityForResult(Context context, Class<?> cls,
+                                       int requestCode) {
+        toActivityForResult(context, cls, requestCode, null);
     }
+
+    protected void toActivityForResult(Context context, Class<?> cls,
+                                       int requestCode, @Nullable Bundle options) {
+        Intent intent = new Intent(context, cls);
+        intent.putExtra(ACTIVITY_BUNDLE, options);
+        startActivityForResult(intent, requestCode);
+    }
+
 
     /**
      * 隐藏软键盘

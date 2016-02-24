@@ -168,7 +168,7 @@ public class ImageCycleView extends RelativeLayout {
         for (int i = 0; i < pageCount; i++) {
             ImageView mImageView = new ImageView(getContext());
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            params.setMargins(indicatorItemPadding, 0, indicatorItemPadding, indicatorPaddingBottom);
+            params.setMargins(indicatorItemPadding, indicatorItemPadding, indicatorItemPadding, indicatorPaddingBottom);
             mImageView.setScaleType(ScaleType.FIT_XY);
             mImageView.setLayoutParams(params);
             mImageViews[i] = mImageView;

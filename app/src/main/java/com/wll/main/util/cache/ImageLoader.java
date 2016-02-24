@@ -41,15 +41,10 @@ public class ImageLoader {
                     imageFileCache.saveBitmap(bitmap, url);
                     imageMemoryCache.addBitmapToCache(url, bitmap);
                 }
-            }else{
+            } else {
                 imageMemoryCache.addBitmapToCache(url, bitmap);
             }
         }
         return bitmap;
     }
-
-    public void init(){
-
-    }
-
 }

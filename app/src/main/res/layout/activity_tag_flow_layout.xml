@@ -8,6 +8,7 @@
     <com.wll.main.widget.flowTag.TagFlowLayout
         android:id="@+id/tagFlowLayout"
         android:layout_width="wrap_content"
+        android:padding="10dp"
         android:layout_height="wrap_content"></com.wll.main.widget.flowTag.TagFlowLayout>
 
 </LinearLayout>

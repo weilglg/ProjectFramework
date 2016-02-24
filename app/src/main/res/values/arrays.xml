@@ -2,11 +2,8 @@
 <resources>
     <string-array name="views_name">
         <item>TagFlowLayout</item>
-        <item>FlowTagLayoutView</item>
-        <item>HorizontalInnerScrollView+ViewPager</item>
         <item>ObservableScrollView</item>
         <item>TagWithDeleteButtonView</item>
         <item>ZoomImageView</item>
-        <item>ObservableScrollView</item>
     </string-array>
 </resources>
