@@ -32,13 +32,13 @@ public class BaseHomeActivity extends BaseIndicatorActivity {
 
     @Override
     protected void initTabsInfo(List<TabInfo> tabs) {
-        tabs.add(new TabInfo(0, "荒野", R.drawable.icon_huangye_hui,
+        tabs.add(new TabInfo(0, "演示", R.drawable.icon_huangye_hui,
                 R.drawable.icon_huangye, FragmentA.class));
-        tabs.add(new TabInfo(1, "跛豪", R.drawable.icon_up, R.drawable.icon_down,
+        tabs.add(new TabInfo(1, "嵌套", R.drawable.icon_up, R.drawable.icon_down,
                 FragmentB.class));
-        tabs.add(new TabInfo(2, "我的", R.drawable.icon_wode_hui,
+        tabs.add(new TabInfo(2, "功能", R.drawable.icon_wode_hui,
                 R.drawable.icon_wode, FragmentC.class));
-        tabs.add(new TabInfo(3, "通宵", R.drawable.icon_tongxunlu_hui,
+        tabs.add(new TabInfo(3, "学习", R.drawable.icon_tongxunlu_hui,
                 R.drawable.icon_tongxunlu, FragmentD.class));
     }
 
@@ -66,16 +66,16 @@ public class BaseHomeActivity extends BaseIndicatorActivity {
         String mainTitle = "";
         switch (index) {
             case 0:
-                mainTitle = "荒野";
+                mainTitle = "控件";
                 break;
             case 1:
-                mainTitle = "跛豪";
+                mainTitle = "嵌套";
                 break;
             case 2:
-                mainTitle = "我的";
+                mainTitle = "功能";
                 break;
             case 3:
-                mainTitle = "通宵";
+                mainTitle = "学习";
                 break;
         }
         setMainTitleContent(mainTitle);

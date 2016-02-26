@@ -6,4 +6,8 @@
         <item>TagWithDeleteButtonView</item>
         <item>ZoomImageView</item>
     </string-array>
+    <string-array name="function_name">
+        <item>图片选择器</item>
+        <item>二维码识别</item>
+    </string-array>
 </resources>

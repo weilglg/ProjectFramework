@@ -1,7 +1,10 @@
 package com.wll.main.util;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.os.Looper;
+import android.widget.ImageView;
 
 import com.google.gson.Gson;
 import com.google.gson.internal.$Gson$Types;
@@ -35,8 +38,8 @@ import java.util.Set;
  * Created by wll on 2015/11/4.
  * 网络请求类，修改网络上zhy提供的访问网络的工具类
  */
-public class HttpUtils {
-    private static HttpUtils mHttpUtil;
+public class OkHttpUtils {
+    private static OkHttpUtils mHttpUtil;
 
     private OkHttpClient mOkHttpClient;
 
@@ -52,19 +55,20 @@ public class HttpUtils {
 
     private UploadDelegate mUploadDelegate;
 
+    private DisplayImageDelegate mDisplayImageDelegate;
 
-    public static HttpUtils getInstance() {
+    public static OkHttpUtils getInstance() {
         if (mHttpUtil == null) {
-            synchronized (HttpUtils.class) {
+            synchronized (OkHttpUtils.class) {
                 if (mHttpUtil == null) {
-                    mHttpUtil = new HttpUtils();
+                    mHttpUtil = new OkHttpUtils();
                 }
             }
         }
         return mHttpUtil;
     }
 
-    public HttpUtils() {
+    public OkHttpUtils() {
         mOkHttpClient = new OkHttpClient();
         mOkHttpClient.setCookieHandler(new CookieManager(null, CookiePolicy.ACCEPT_ORIGINAL_SERVER));
         mDelivery = new Handler(Looper.getMainLooper());
@@ -73,6 +77,7 @@ public class HttpUtils {
         mGetDelegate = new GetDelegate();
         mUploadDelegate = new UploadDelegate();
         mDownloadDelegate = new DownloadDelegate();
+        mDisplayImageDelegate = new DisplayImageDelegate();
     }
 
     private PostDelegate getPostDelegate() {
@@ -83,13 +88,19 @@ public class HttpUtils {
         return mGetDelegate;
     }
 
-    public UploadDelegate getUploadDelegate() {
+    private UploadDelegate getUploadDelegate() {
         return mUploadDelegate;
     }
 
-    public DownloadDelegate getDownloadDelegate() {
+    private DownloadDelegate getDownloadDelegate() {
         return mDownloadDelegate;
     }
+
+
+    private DisplayImageDelegate getDisplayImageDelegate() {
+        return mDisplayImageDelegate;
+    }
+
 
     //-------------------------------------------对外提供的方法方便调用-------------------------------
 
@@ -190,6 +201,7 @@ public class HttpUtils {
         postAsyn(url, callback, params, tag);
     }
 
+
     //--------------------------------便利的Get请求的方法--------------------------------------------
 
     /**
@@ -244,7 +256,8 @@ public class HttpUtils {
      * @param destFileDir 本地文件存储的文件夹
      * @param tag         标签用于取消
      */
-    public static void downloadAsyn(final String url, final String destFileDir, final ResultCallback callback, Object tag) {
+    public static void downloadAsyn(final String url, final String destFileDir, final ResultCallback callback, Object
+            tag) {
         getInstance().getDownloadDelegate().downloadAsyn(url, destFileDir, callback, tag);
     }
 
@@ -271,7 +284,8 @@ public class HttpUtils {
     /**
      * 同步基于post的文件上传:上传多个文件以及携带key-value对：主方法
      */
-    public static Response post(String url, String[] fileKeys, File[] files, Param[] params, Object tag) throws IOException {
+    public static Response post(String url, String[] fileKeys, File[] files, Param[] params, Object tag) throws
+            IOException {
         return getInstance().getUploadDelegate().post(url, fileKeys, files, params, tag);
     }
 
@@ -285,24 +299,40 @@ public class HttpUtils {
     /**
      * 异步基于post的文件上传:主方法
      */
-    public static void postAsyn(String url, String[] fileKeys, File[] files, Param[] params, ResultCallback callback, Object tag) {
+    public static void postAsyn(String url, String[] fileKeys, File[] files, Param[] params, ResultCallback callback,
+                                Object tag) {
         getInstance().getUploadDelegate().postAsyn(url, fileKeys, files, params, callback, tag);
     }
 
     /**
      * 异步基于post的文件上传:单文件不带参数上传
      */
-    public static void postAsyn(String url, String fileKey, File file, ResultCallback callback, Object tag) throws IOException {
+    public static void postAsyn(String url, String fileKey, File file, ResultCallback callback, Object tag) throws
+            IOException {
         postAsyn(url, new String[]{fileKey}, new File[]{file}, null, callback, tag);
     }
 
     /**
      * 异步基于post的文件上传，单文件且携带其他form参数上传
      */
-    public static void postAsyn(String url, String fileKey, File file, Param[] params, ResultCallback callback, Object tag) {
+    public static void postAsyn(String url, String fileKey, File file, Param[] params, ResultCallback callback,
+                                Object tag) {
         postAsyn(url, new String[]{fileKey}, new File[]{file}, params, callback, tag);
 
     }
+
+    public static void displayImage(ImageView view, String url, int errorResId, Object tag) {
+        getInstance().getDisplayImageDelegate().displayImage(view, url, errorResId, tag);
+    }
+
+    public static void displayImage(ImageView view, String url) {
+        getInstance().getDisplayImageDelegate().displayImage(view, url, -1, null);
+    }
+
+    public static void displayImage(ImageView view, String url, Object tag) {
+        getInstance().getDisplayImageDelegate().displayImage(view, url, -1, tag);
+    }
+
 
     //------------------------------------------------GET请求--------------------------------
 
@@ -456,7 +486,8 @@ public class HttpUtils {
         /**
          * 同步基于post的文件上传:上传多个文件以及携带key-value对：主方法
          */
-        public Response post(String url, String[] fileKeys, File[] files, Param[] params, Object tag) throws IOException {
+        public Response post(String url, String[] fileKeys, File[] files, Param[] params, Object tag) throws
+                IOException {
             Request request = buildMultipartFormRequest(url, files, fileKeys, params, tag);
             return mOkHttpClient.newCall(request).execute();
         }
@@ -464,7 +495,8 @@ public class HttpUtils {
         /**
          * 异步基于post的文件上传:主方法
          */
-        public void postAsyn(String url, String[] fileKeys, File[] files, Param[] params, ResultCallback callback, Object tag) {
+        public void postAsyn(String url, String[] fileKeys, File[] files, Param[] params, ResultCallback callback,
+                             Object tag) {
             Request request = buildMultipartFormRequest(url, files, fileKeys, params, tag);
             deliveryResult(callback, request);
         }
@@ -498,9 +530,8 @@ public class HttpUtils {
                     File file = files[i];
                     String fileName = file.getName();
                     fileBody = RequestBody.create(MediaType.parse(guessMimeType(fileName)), file);
-                    //TODO 根据文件名设置contentType
                     builder.addPart(Headers.of("Content-Disposition",
-                                    "form-data; name=\"" + fileKeys[i] + "\"; filename=\"" + fileName + "\""),
+                            "form-data; name=\"" + fileKeys[i] + "\"; filename=\"" + fileName + "\""),
                             fileBody);
                 }
             }
@@ -512,6 +543,86 @@ public class HttpUtils {
                     .build();
         }
     }
+
+    //====================DisplayImageDelegate=======================
+
+    /**
+     * 加载图片相关
+     */
+    private class DisplayImageDelegate {
+        /**
+         * 加载图片
+         */
+        public void displayImage(final ImageView view, final String url, final int errorResId, final Object tag) {
+            final Request request = new Request.Builder()
+                    .url(url)
+                    .build();
+            Call call = mOkHttpClient.newCall(request);
+            call.enqueue(new Callback() {
+                @Override
+                public void onFailure(Request request, IOException e) {
+                    setErrorResId(view, errorResId);
+                }
+
+                @Override
+                public void onResponse(Response response) {
+                    InputStream is = null;
+                    try {
+                        is = response.body().byteStream();
+                        ImageUtils.ImageSize actualImageSize = ImageUtils.getImageSize(is);
+                        ImageUtils.ImageSize imageViewSize = ImageUtils.getImageViewSize(view);
+                        int inSampleSize = ImageUtils.calculateInSampleSize(actualImageSize, imageViewSize);
+                        try {
+                            is.reset();
+                        } catch (IOException e) {
+                            response = mGetDelegate.get(url, tag);
+                            is = response.body().byteStream();
+                        }
+
+                        BitmapFactory.Options ops = new BitmapFactory.Options();
+                        ops.inJustDecodeBounds = false;
+                        ops.inSampleSize = inSampleSize;
+                        final Bitmap bm = BitmapFactory.decodeStream(is, null, ops);
+                        mDelivery.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                view.setImageBitmap(bm);
+                            }
+                        });
+                    } catch (Exception e) {
+                        setErrorResId(view, errorResId);
+
+                    } finally {
+                        if (is != null) try {
+                            is.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            });
+
+
+        }
+
+        public void displayImage(final ImageView view, String url) {
+            displayImage(view, url, -1, null);
+        }
+
+        public void displayImage(final ImageView view, String url, Object tag) {
+            displayImage(view, url, -1, tag);
+        }
+
+        private void setErrorResId(final ImageView view, final int errorResId) {
+            mDelivery.post(new Runnable() {
+                @Override
+                public void run() {
+                    view.setImageResource(errorResId);
+                }
+            });
+        }
+    }
+
 
     //-------------------------------------------DownloadDelegate------------------------------------
 
@@ -525,7 +636,8 @@ public class HttpUtils {
          * @param url
          * @param destFileDir 本地文件存储的文件夹
          */
-        public void downloadAsyn(final String url, final String destFileDir, final ResultCallback callback, Object tag) {
+        public void downloadAsyn(final String url, final String destFileDir, final ResultCallback callback, Object
+                tag) {
             final Request request = new Request.Builder()
                     .url(url)
                     .tag(tag)

@@ -13,7 +13,6 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
-import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import com.wll.main.util.FileUtils;
 import com.wll.main.util.LogUtils;
@@ -68,7 +67,7 @@ public class MyApplication extends Application implements Thread.UncaughtExcepti
                 .cacheOnDisk(true)  //设置下载的图片是否缓存在SD卡中
                 .imageScaleType(ImageScaleType.EXACTLY_STRETCHED)//设置图片以如何的编码方式显示
                 .bitmapConfig(Bitmap.Config.RGB_565) //设置图片的解码类型
-                .displayer(new RoundedBitmapDisplayer(0))//是否设置为圆角，弧度为多少
+//                .displayer(new RoundedBitmapDisplayer(0))//是否设置为圆角，弧度为多少
                 .build();
 
         final String imageCacheDir = sDirectoryName + "/cache/images";

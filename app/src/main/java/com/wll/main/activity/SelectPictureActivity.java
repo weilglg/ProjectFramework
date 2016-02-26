@@ -139,7 +139,7 @@ public class SelectPictureActivity extends BaseActivity {
     public void ok(View v) {
         Intent data = new Intent();
         data.putExtra(INTENT_SELECTED_PICTURE, selectedPicture);
-        setResult(FragmentC.RESULT_CODE, data);
+        setResult(SeePictureActivity.RESULT_CODE, data);
         this.finish();
     }
 

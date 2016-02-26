@@ -22,7 +22,7 @@
             android:value="imageCache"/>
 
         <!-- <activity android:name=".activity.BaseHomeActivity" > -->
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.BaseHomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".base.BaseActivity"/>
-        <activity android:name=".activity.BaseHomeActivity"/>
+        <!-- <activity android:name=".activity.BaseHomeActivity"/> -->
         <activity android:name=".activity.TagFlowLayoutActivity"/>
         <activity android:name=".activity.FlowTagLayoutActivity"/>
         <activity android:name=".activity.ObservableScrollViewActivity">
@@ -38,6 +38,10 @@
         <activity android:name=".activity.ZoomImageViewActivity">
         </activity>
         <activity android:name=".activity.SelectPictureActivity">
+        </activity>
+        <activity android:name=".activity.SeePictureActivity">
+        </activity>
+        <activity android:name=".activity.WebViewActivity">
         </activity>
     </application>
 

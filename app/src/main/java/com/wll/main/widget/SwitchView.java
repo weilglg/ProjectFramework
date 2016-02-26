@@ -62,15 +62,15 @@ public class SwitchView extends View {
 	 */
 	public static final int STATE_SWITCH_ON = 4;
 	/**
-	 * state prepare to off 
+	 * state prepare to off
 	 */
 	public static final int STATE_SWITCH_ON2 = 3;
 	/**
-	 * state prepare to on 
+	 * state prepare to on
 	 */
 	public static final int STATE_SWITCH_OFF2 = 2;
 	/**
-	 * state prepare to off 
+	 * state prepare to off
 	 */
 	public static final int STATE_SWITCH_OFF = 1;
 	/**
@@ -100,7 +100,7 @@ public class SwitchView extends View {
 		this(context, null);
 	}
 
-	
+
 	public SwitchView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		setLayerType(LAYER_TYPE_SOFTWARE, null);
@@ -223,7 +223,8 @@ public class SwitchView extends View {
 		return result - bOffLeftX;
 	}
 
-	@Override protected void onDraw(Canvas canvas) {
+	@Override
+	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
 		paint.setAntiAlias(true);
 		final boolean isOn = (state == STATE_SWITCH_ON || state == STATE_SWITCH_ON2);
@@ -273,7 +274,8 @@ public class SwitchView extends View {
 		if (sAnim > 0 || bAnim > 0) invalidate();
 	}
 
-	@Override public boolean onTouchEvent(MotionEvent event) {
+	@Override
+    public boolean onTouchEvent(MotionEvent event) {
 		if ((state == STATE_SWITCH_ON || state == STATE_SWITCH_OFF) && (sAnim * bAnim == 0)) {
 			switch (event.getAction()) {
 			case MotionEvent.ACTION_DOWN:
@@ -310,7 +312,7 @@ public class SwitchView extends View {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return the state of switch view
 	 */
 	public int getState() {
