@@ -18,6 +18,7 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
+import com.wll.main.util.http.callback.LoaderImageListener;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -601,8 +602,54 @@ public class OkHttpUtils {
                     }
                 }
             });
+        }
 
+        public void displayImage(String url, LoaderImageListener listener){
+            displayImage(url, listener, null);
+        }
 
+        /**
+         * 加载图片
+         */
+        public void displayImage(final String url, final LoaderImageListener listener, final Object tag) {
+            final Request request = new Request.Builder()
+                    .url(url)
+                    .build();
+            Call call = mOkHttpClient.newCall(request);
+            call.enqueue(new Callback() {
+                @Override
+                public void onFailure(Request request, IOException e) {
+                    listener.onError(request, e);
+                }
+
+                @Override
+                public void onResponse(Response response) {
+                    InputStream is = null;
+                    try {
+                        is = response.body().byteStream();
+                        try {
+                            is.reset();
+                        } catch (IOException e) {
+                            response = mGetDelegate.get(url, tag);
+                            is = response.body().byteStream();
+                        }
+                        final Bitmap bm = BitmapFactory.decodeStream(is);
+                        if (bm != null){
+                            listener.onResponse(bm);
+                        }else{
+                            listener.onError(request, new NullPointerException("bitmap is null"));
+                        }
+                    } catch (Exception e) {
+                        listener.onError(request, e);
+                    } finally {
+                        if (is != null) try {
+                            is.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            });
         }
 
         public void displayImage(final ImageView view, String url) {
