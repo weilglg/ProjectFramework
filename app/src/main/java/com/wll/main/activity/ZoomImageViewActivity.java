@@ -8,9 +8,8 @@ import com.wll.main.base.BaseActivity;
 public class ZoomImageViewActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_zoom_image_view);
+    protected int getMainViewResId() {
+        return R.layout.activity_zoom_image_view;
     }
 
     @Override

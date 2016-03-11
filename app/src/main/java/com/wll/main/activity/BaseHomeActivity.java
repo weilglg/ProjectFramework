@@ -21,7 +21,7 @@ public class BaseHomeActivity extends BaseIndicatorActivity {
     }
 
     @Override
-    protected int getViewPagerIndicatorViewId() {
+    protected int getTagIndicatorViewId() {
         return R.id.base_home_tab_indicator;
     }
 
@@ -56,7 +56,7 @@ public class BaseHomeActivity extends BaseIndicatorActivity {
     protected void onInitFragmentEnd(int index, Fragment fragment) {
         if (index == 1 && fragment != null) {
             Bundle bundle = new Bundle();
-            bundle.putInt(FragmentB.EXTRA_TAB, 2);
+            bundle.putInt(FragmentB.EXTRA_TAB, 0);
             fragment.setArguments(bundle);
         }
     }

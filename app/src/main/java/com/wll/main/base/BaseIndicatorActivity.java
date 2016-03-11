@@ -18,8 +18,8 @@ import com.wll.main.widget.TabIndicatorView;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BaseIndicatorActivity extends
-        BaseActivity implements OnPageChangeListener {
+public abstract class BaseIndicatorActivity extends BaseActivity implements OnPageChangeListener,
+        TabIndicatorView.OnTabChangeListener {
 
     public static final String EXTRA_TAB = "tab";
 
@@ -42,20 +42,15 @@ public abstract class BaseIndicatorActivity extends
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(getMainViewResId());
-    }
-
-    @Override
     protected void onDestroy() {
         mTabs.clear();
         mTabs = null;
-        myAdapter.notifyDataSetChanged();
-        myAdapter = null;
-        mPager.setAdapter(null);
-        mPager = null;
+        if (mPager != null) {
+            myAdapter.notifyDataSetChanged();
+            myAdapter = null;
+            mPager.setAdapter(null);
+            mPager = null;
+        }
         mIndicator = null;
         super.onDestroy();
     }
@@ -67,27 +62,32 @@ public abstract class BaseIndicatorActivity extends
         initTabsInfo(mTabs);
         Intent intent = getIntent();
         if (intent != null) {
-            int  tabIndex = intent.getIntExtra(EXTRA_TAB, mCurrentTab);
-            if (tabIndex >= 0 && tabIndex < mTabs.size()){
+            int tabIndex = intent.getIntExtra(EXTRA_TAB, mCurrentTab);
+            if (tabIndex >= 0 && tabIndex < mTabs.size()) {
                 mCurrentTab = tabIndex;
             }
         }
-        myAdapter = new IndicatorTabPageAdapter(this, getSupportFragmentManager(), mTabs);
+        // 根据ID获得选项卡对象
+        mIndicator = (TabIndicatorView) findViewById(getTagIndicatorViewId());
+        int layoutResId = getViewPagerId();
+        if (layoutResId != 0) {
+            myAdapter = new IndicatorTabPageAdapter(this, getSupportFragmentManager(), mTabs);
+            mPager = (ViewPager) findViewById(getViewPagerId());
+            mPager.setAdapter(myAdapter);
+            mPager.setOnPageChangeListener(this);
+            mPager.setOffscreenPageLimit(0);
+            // 设置ViewPager内部页面之间的间距
+            mPager.setPageMargin(getResources().getDimensionPixelSize(
+                    R.dimen.viewpager_margin_width));
+            // 设置ViewPager内部页面间距的Drawable
+            mPager.setPageMarginDrawable(android.R.color.transparent);
+            mPager.setCurrentItem(mCurrentTab, false);
+        } else {
+            mIndicator.setOnTabChangeListener(this);
+        }
 
-        mPager = (ViewPager) findViewById(getViewPagerId());
-        mPager.setAdapter(myAdapter);
-        mPager.addOnPageChangeListener(this);
-        mPager.setOffscreenPageLimit(0);
-        // 设置ViewPager内部页面之间的间距
-        mPager.setPageMargin(getResources().getDimensionPixelSize(
-                R.dimen.viewpager_margin_width));
-        // 设置ViewPager内部页面间距的Drawable
-        mPager.setPageMarginDrawable(R.color.viewpager_margin_color);
-
-        mIndicator = (TabIndicatorView) findViewById(getViewPagerIndicatorViewId());
+        // 初始化选项卡
         mIndicator.init(mCurrentTab, mTabs, mPager);
-
-        mPager.setCurrentItem(mCurrentTab, false);
     }
 
     @Override
@@ -108,7 +108,7 @@ public abstract class BaseIndicatorActivity extends
     public void onPageScrollStateChanged(int state) {
     }
 
-    protected TabInfo getFragmentById(int tabId) {
+    protected TabInfo getTabInfoById(int tabId) {
         if (mTabs == null)
             return null;
         for (int index = 0, count = mTabs.size(); index < count; index++) {
@@ -128,7 +128,12 @@ public abstract class BaseIndicatorActivity extends
     public void navigate(int tabId) {
         for (int index = 0, count = mTabs.size(); index < count; index++) {
             if (mTabs.get(index).getId() == tabId) {
-                mPager.setCurrentItem(index, false);
+                if (mPager != null) {
+                    mPager.setCurrentItem(index, false);
+                } else if (mIndicator != null
+                        && mIndicator.getOnTabChangeListener() != null) {
+                    mIndicator.getOnTabChangeListener().onTabChange(index);
+                }
             }
         }
     }
@@ -139,36 +144,45 @@ public abstract class BaseIndicatorActivity extends
     }
 
     /**
-     * 返回layout id
-     *
-     * @return layout id
-     */
-    protected abstract int getMainViewResId();
-
-    /**
      * 在这里提供要显示的选项卡数据
      */
     protected abstract void initTabsInfo(List<TabInfo> tabs);
 
     /**
-     * 在这里提供初始化后的Fragment的特性初始化操作
+     * 在这里提供初始化后的Fragment的特性初始化操作(没有ViewPager时不用重写这个方法)
      */
-    protected abstract void onInitFragmentEnd(int index, Fragment fragment);
+    protected void onInitFragmentEnd(int index, Fragment fragment) {
+
+    }
 
     /**
-     * 切换选项卡监听器
+     * 切换选项卡监听器(没有ViewPager时不用重写这个方法)
      */
-    protected abstract void onViewPagerSwitch(int index, Fragment fragment);
+    protected void onViewPagerSwitch(int index, Fragment fragment) {
+
+    }
 
     /**
-     * 返回ViewPager的控件ID
+     * 返回ViewPager的控件ID，如果没有ViewPager不用重写
      */
-    protected abstract int getViewPagerId();
+    protected int getViewPagerId() {
+        return 0;
+    }
 
     /**
-     * 返回ViewPager指示器的控件资源ID
+     * 选项卡被选中时的回调函数
+     *
+     * @param index 被选中的选项卡的下标
      */
-    protected abstract int getViewPagerIndicatorViewId();
+    @Override
+    public void onTabChange(int index) {
+
+    }
+
+    /**
+     * 返回选项卡控件的布局ID
+     */
+    protected abstract int getTagIndicatorViewId();
 
 
     public class TabInfo extends com.wll.main.model.TabInfo {

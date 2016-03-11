@@ -18,8 +18,6 @@ public class FragmentB extends BaseIndicatorFragment {
         return R.layout.fragment_b;
     }
 
-
-
     @Override
     protected void initViews(View v) {
         super.initViews(v);
@@ -48,7 +46,7 @@ public class FragmentB extends BaseIndicatorFragment {
     }
 
     @Override
-    protected int getViewPagerIndicatorViewId() {
+    protected int getTabIndicatorViewId() {
         return R.id.fragment_b_indicator;
     }
 

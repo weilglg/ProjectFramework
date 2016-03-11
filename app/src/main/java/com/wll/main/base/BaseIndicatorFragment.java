@@ -17,7 +17,8 @@ import java.util.List;
  * Created by wll on 2015/11/9.
  * 有选项卡的Fragment的基类
  */
-public abstract class BaseIndicatorFragment extends BaseFragment implements ViewPager.OnPageChangeListener {
+public abstract class BaseIndicatorFragment extends BaseFragment implements ViewPager.OnPageChangeListener,
+        TabIndicatorView.OnTabChangeListener {
 
     public static final String EXTRA_TAB = "tab";
 
@@ -66,21 +67,27 @@ public abstract class BaseIndicatorFragment extends BaseFragment implements View
                     mCurrentTab = tabIndex;
                 }
             }
-            myAdapter = new IndicatorTabPageAdapter(getActivity(), getChildFragmentManager(), mTabs);
+            mIndicator = (TabIndicatorView) v.findViewById(getTabIndicatorViewId());
 
-            mPager = (ViewPager) v.findViewById(getViewPagerId());
-            mPager.setAdapter(myAdapter);
-            mPager.addOnPageChangeListener(this);
-            mPager.setOffscreenPageLimit(1);
-            // 设置ViewPager内部页面之间的间距
-            mPager.setPageMargin(getResources().getDimensionPixelSize(
-                    R.dimen.viewpager_margin_width));
-            // 设置ViewPager内部页面间距的Drawable
-            mPager.setPageMarginDrawable(R.color.viewpager_margin_color);
 
-            mIndicator = (TabIndicatorView) v.findViewById(getViewPagerIndicatorViewId());
+            int layoutResId = getViewPagerId();
+            if (layoutResId != 0) {
+                myAdapter = new IndicatorTabPageAdapter(getActivity(), getChildFragmentManager(), mTabs);
+
+                mPager = (ViewPager) v.findViewById(getViewPagerId());
+                mPager.setAdapter(myAdapter);
+                mPager.addOnPageChangeListener(this);
+                mPager.setOffscreenPageLimit(1);
+                // 设置ViewPager内部页面之间的间距
+                mPager.setPageMargin(getResources().getDimensionPixelSize(
+                        R.dimen.viewpager_margin_width));
+                // 设置ViewPager内部页面间距的Drawable
+                mPager.setPageMarginDrawable(R.color.viewpager_margin_color);
+                mPager.setCurrentItem(mCurrentTab, false);
+            } else {
+                mIndicator.setOnTabChangeListener(this);
+            }
             mIndicator.init(mCurrentTab, mTabs, mPager);
-            mPager.setCurrentItem(mCurrentTab, false);
         }
     }
 
@@ -122,7 +129,12 @@ public abstract class BaseIndicatorFragment extends BaseFragment implements View
     public void navigate(int tabId) {
         for (int index = 0, count = mTabs.size(); index < count; index++) {
             if (mTabs.get(index).getId() == tabId) {
-                mPager.setCurrentItem(index, false);
+                if (mPager != null) {
+                    mPager.setCurrentItem(index, false);
+                } else if (mIndicator != null
+                        && mIndicator.getOnTabChangeListener() != null) {
+                    mIndicator.getOnTabChangeListener().onTabChange(index);
+                }
             }
         }
     }
@@ -133,26 +145,37 @@ public abstract class BaseIndicatorFragment extends BaseFragment implements View
     protected abstract void initTabsInfo(List<TabInfo> tabs);
 
     /**
-     * 在这里提供初始化后的Fragment的特性初始化操作
+     * 在这里提供初始化后的Fragment的特性初始化操作(没有ViewPager时不用重写这个方法)
      */
-    protected abstract void onInitFragmentEnd(int index, Fragment fragment);
+    protected void onInitFragmentEnd(int index, Fragment fragment) {
+
+    }
 
     /**
-     * 切换选项卡监听器
+     * 切换选项卡监听器(没有ViewPager时不用重写这个方法)
      */
-    protected abstract void onViewPagerSwitch(int index, Fragment fragment);
+    protected void onViewPagerSwitch(int index, Fragment fragment) {
+
+    }
 
     /**
-     * 返回ViewPager的控件ID
+     * 返回ViewPager的控件ID，如果没有ViewPager不用重写
      */
-    protected abstract int getViewPagerId();
+    protected int getViewPagerId() {
+        return 0;
+    }
 
     /**
      * 返回ViewPager指示器的控件资源ID
      */
-    protected abstract int getViewPagerIndicatorViewId();
+    protected abstract int getTabIndicatorViewId();
 
-    public class TabInfo extends com.wll.main.model.TabInfo{
+    @Override
+    public void onTabChange(int index) {
+
+    }
+
+    public class TabInfo extends com.wll.main.model.TabInfo {
 
         public TabInfo(int id, String name, Class<? extends Fragment> clazz) {
             super(id, name, clazz);

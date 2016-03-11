@@ -16,12 +16,17 @@ public class ObservableScrollViewActivity extends BaseActivity {
     private ObservableScrollView observableScrollView;
     private NoScrollListView noScrollListView;
 
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_observable_scroll_view);
+//        initViews();
+//        initListener();
+//    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_observable_scroll_view);
-        initViews();
-        initListener();
+    protected int getMainViewResId() {
+        return R.layout.activity_observable_scroll_view;
     }
 
     @Override

@@ -25,9 +25,8 @@ public class TagFlowLayoutActivity extends BaseActivity implements TagFlowLayout
     private TagFlowLayout tagFlowLayout;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tag_flow_layout);
+    protected int getMainViewResId() {
+        return R.layout.activity_tag_flow_layout;
     }
 
     @Override

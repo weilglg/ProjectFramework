@@ -1,5 +1,6 @@
 package com.wll.main.fragment;
 
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,6 +15,7 @@ import com.wll.main.activity.ZoomImageViewActivity;
 import com.wll.main.base.BaseFragment;
 import com.wll.main.widget.ImageCycleView;
 import com.wll.main.widget.NoScrollListView;
+import com.wll.main.widget.PromptDialogView;
 
 import java.util.ArrayList;
 
@@ -109,6 +111,12 @@ public class FragmentA extends BaseFragment implements AdapterView.OnItemClickLi
                 break;
             case 3:
                 toActivity(ZoomImageViewActivity.class);
+                break;
+            case 4:
+                PromptDialogView dialogView = new PromptDialogView();
+                FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
+                dialogView.show(fragmentTransaction, "tag");
+
                 break;
         }
     }

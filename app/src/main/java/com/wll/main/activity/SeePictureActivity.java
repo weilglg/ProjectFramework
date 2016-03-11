@@ -27,9 +27,8 @@ public class SeePictureActivity extends BaseActivity {
     private Button btn;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_see_picture);
+    protected int getMainViewResId() {
+        return R.layout.activity_see_picture;
     }
 
     @Override

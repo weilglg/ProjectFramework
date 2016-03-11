@@ -24,9 +24,8 @@ public class FlowTagLayoutActivity extends BaseActivity implements WaterfallWith
     private List<WaterfallWithDeleteView.Tag> mTags;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_flow_tag_layout);
+    protected int getMainViewResId() {
+        return R.layout.activity_flow_tag_layout;
     }
 
     private void initData() {

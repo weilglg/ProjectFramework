@@ -34,7 +34,7 @@ import com.wll.main.widget.ImageCycleView;
 
 import java.util.ArrayList;
 
-public class BaseActivity extends FragmentActivity implements View.OnClickListener {
+public abstract class BaseActivity extends FragmentActivity implements View.OnClickListener {
 
 
     private static final String ACTIVITY_BUNDLE = "ACTIVITY_BUNDLE";
@@ -95,12 +95,14 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
         }
     };
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         mInflater = LayoutInflater.from(this);
+        if (getMainViewResId() > 0){
+            this.setContentView(getMainViewResId());
+        }
     }
 
 
@@ -248,6 +250,13 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
             unRegisterNetWorkReceiver();
         }
     }
+
+    /**
+     * 返回layout id
+     *
+     * @return layout id
+     */
+    protected abstract int getMainViewResId();
 
     /**
      * 是否需要加载广告布局，子类需要加载时重写该方法返回true<p/>
@@ -614,7 +623,7 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
     // 设置系统状态栏
     @SuppressLint("InlinedApi")
     protected void setTranslucentStatus(View view, int resId) {
-        if (view == null){
+        if (view == null) {
             return;
         }
         // 判断版本是4.4以上

@@ -1,5 +1,6 @@
 package com.wll.main.fragment;
 
+import android.app.Dialog;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -15,10 +16,22 @@ import java.util.ArrayList;
 public class SubFragmentC extends BaseFragment {
 
     private ListView mListView;
+    Dialog dialog;
+
     @Override
     protected void loaderData() {
-        mListView.setAdapter(new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,getData()));
-        mHasLoadedOnce= true;
+        dialog = new Dialog(getActivity());
+        dialog.setTitle("正在加载数据。。。");
+        dialog.show();
+        mListView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dialog.dismiss();
+            }
+        }, 5000);
+
+        mListView.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, getData()));
+        mHasLoadedOnce = true;
     }
 
     private ArrayList<String> getData() {
@@ -36,7 +49,7 @@ public class SubFragmentC extends BaseFragment {
 
     @Override
     protected void initViews(View v) {
-        mListView= (ListView) v.findViewById(R.id.subFragmentB_listView);
+        mListView = (ListView) v.findViewById(R.id.subFragmentB_listView);
     }
 
     @Override

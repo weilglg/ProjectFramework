@@ -14,10 +14,10 @@ public class WebViewActivity extends BaseActivity {
     private DiscernCodeWebView webView;
     private WebSettings mWebSettings;
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_web_view);
+    protected int getMainViewResId() {
+        return R.layout.activity_web_view;
     }
 
     @Override

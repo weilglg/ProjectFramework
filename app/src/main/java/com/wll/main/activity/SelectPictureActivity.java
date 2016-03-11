@@ -75,8 +75,6 @@ public class SelectPictureActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_select_picture);
         MAX_NUM = getIntent().getIntExtra(INTENT_MAX_NUM, 6);
         context = this;
         mContentResolver = getContentResolver();
@@ -85,7 +83,11 @@ public class SelectPictureActivity extends BaseActivity {
                 .showImageForEmptyUri(R.mipmap.ic_launcher).showImageOnFail(R.mipmap.ic_launcher)
                 .cacheInMemory(true).cacheOnDisk(true).considerExifParams(true)
                 .imageScaleType(ImageScaleType.EXACTLY).bitmapConfig(Bitmap.Config.RGB_565).build();
-        initView();
+    }
+
+    @Override
+    protected int getMainViewResId() {
+        return R.layout.activity_select_picture;
     }
 
     @Override
@@ -143,7 +145,8 @@ public class SelectPictureActivity extends BaseActivity {
         this.finish();
     }
 
-    private void initView() {
+    protected void initViews() {
+        super.initViews();
         imageAll = new ImageFloder();
         imageAll.setDir("/所有图片");
         currentImageFolder = imageAll;

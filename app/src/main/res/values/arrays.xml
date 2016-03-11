@@ -5,6 +5,7 @@
         <item>ObservableScrollView</item>
         <item>TagWithDeleteButtonView</item>
         <item>ZoomImageView</item>
+        <item>PromptDialog</item>
     </string-array>
     <string-array name="function_name">
         <item>图片选择器</item>

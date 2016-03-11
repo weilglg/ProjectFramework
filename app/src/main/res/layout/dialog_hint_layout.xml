@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_redius_white"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/dialog_hint_title"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="提示"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/dialog_hint_content"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:gravity="center_horizontal"
+        android:paddingTop="10dp"
+        android:text="是否删除该记录？"
+        android:textColor="#EEEEEE"
+        android:textSize="16sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp" >
+
+        <TextView
+            android:id="@+id/dialog_hint_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/view1"
+            android:layout_toLeftOf="@+id/view2"
+            android:background="@drawable/hint_dialog_leftbtn_selector"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="#37ACF4"
+            android:textSize="18sp" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#EEEEEE" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignTop="@+id/dialog_hint_cancel"
+            android:layout_centerHorizontal="true"
+            android:background="#EEEEEE" />
+
+        <TextView
+            android:id="@+id/dialog_hint_affirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/dialog_hint_cancel"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/view2"
+            android:layout_toRightOf="@+id/view2"
+            android:background="@drawable/hint_dialog_rightbtn_selector"
+            android:gravity="center"
+            android:text="确认"
+            android:textColor="#37ACF4"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+</LinearLayout>

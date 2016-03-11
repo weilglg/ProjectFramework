@@ -18,7 +18,6 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         setMainTitleContent("测试标题栏");
         setRightLayoutDrawable(R.drawable.icon_menu);
         setLeftLayoutString("返回");
@@ -53,6 +52,11 @@ public class MainActivity extends BaseActivity {
     @Override
     protected int getAdIndicatorPosition() {
         return 1;
+    }
+
+    @Override
+    protected int getMainViewResId() {
+        return R.layout.activity_main;
     }
 
     @Override
