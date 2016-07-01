@@ -32,14 +32,14 @@ public class BaseHomeActivity extends BaseIndicatorActivity {
 
     @Override
     protected void initTabsInfo(List<TabInfo> tabs) {
-        tabs.add(new TabInfo(0, "演示", R.drawable.icon_huangye_hui,
-                R.drawable.icon_huangye, FragmentA.class));
-        tabs.add(new TabInfo(1, "嵌套", R.drawable.icon_up, R.drawable.icon_down,
+        tabs.add(new TabInfo(0, "演示", R.mipmap.icon_huangye_hui,
+                R.mipmap.icon_huangye, FragmentA.class));
+        tabs.add(new TabInfo(1, "嵌套", R.mipmap.icon_up, R.mipmap.icon_down,
                 FragmentB.class));
-        tabs.add(new TabInfo(2, "功能", R.drawable.icon_wode_hui,
-                R.drawable.icon_wode, FragmentC.class));
-        tabs.add(new TabInfo(3, "学习", R.drawable.icon_tongxunlu_hui,
-                R.drawable.icon_tongxunlu, FragmentD.class));
+        tabs.add(new TabInfo(2, "功能", R.mipmap.icon_wode_hui,
+                R.mipmap.icon_wode, FragmentC.class));
+        tabs.add(new TabInfo(3, "学习", R.mipmap.icon_tongxunlu_hui,
+                R.mipmap.icon_tongxunlu, FragmentD.class));
     }
 
     @Override

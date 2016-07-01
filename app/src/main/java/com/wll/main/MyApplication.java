@@ -58,9 +58,9 @@ public class MyApplication extends Application implements Thread.UncaughtExcepti
          * ImageLoader全局参数设置
          */
         DisplayImageOptions options = new DisplayImageOptions.Builder()
-                .showImageOnLoading(R.drawable.banner_load_img)  //设置图片在下载期间显示的图片
-                .showImageForEmptyUri(R.drawable.banner_load_img) //设置图片Uri为空或是错误的时候显示的图片
-                .showImageOnFail(R.drawable.banner_load_img) //设置图片加载/解码过程中错误时候显示的图片
+                .showImageOnLoading(R.mipmap.banner_load_img)  //设置图片在下载期间显示的图片
+                .showImageForEmptyUri(R.mipmap.banner_load_img) //设置图片Uri为空或是错误的时候显示的图片
+                .showImageOnFail(R.mipmap.banner_load_img) //设置图片加载/解码过程中错误时候显示的图片
                 .resetViewBeforeLoading(false) // //设置图片在下载前是否重置，复位
                 .delayBeforeLoading(1000)//设置图片下载前的延迟
                 .cacheInMemory(true)  //设置下载的图片是否缓存在内存中

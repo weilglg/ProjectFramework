@@ -270,7 +270,7 @@ public class SelectPictureActivity extends BaseActivity {
                 holder = (ViewHolder) convertView.getTag();
             }
             if (position == 0) {
-                holder.iv.setImageResource(R.drawable.pickphotos_to_camera_normal);
+                holder.iv.setImageResource(R.mipmap.pickphotos_to_camera_normal);
                 holder.checkBox.setVisibility(View.INVISIBLE);
             } else {
                 position = position - 1;

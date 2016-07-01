@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginTop="10dp"
-            android:src="@drawable/refresh_header_hint" />
+            android:src="@mipmap/refresh_header_hint" />
 
         <TextView
             android:id="@+id/refresh_header_prompt"

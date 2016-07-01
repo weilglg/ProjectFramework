@@ -19,7 +19,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_margin="8dp"
-            android:background="@drawable/icon_return"
+            android:background="@mipmap/icon_return"
             android:onClick="back" />
 
         <TextView
@@ -77,7 +77,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_margin="8dp"
-                android:background="@drawable/spinner_bg"
+                android:background="@null"
                 android:onClick="select"
                 android:text="所有图片"
                 android:textColor="#fff"

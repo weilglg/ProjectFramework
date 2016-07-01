@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginLeft="5dp"
-        android:background="@drawable/ts_icon" />
+        android:background="@mipmap/ts_icon" />
 
     <TextView
         android:id="@+id/tv_hint"
@@ -32,6 +32,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:background="@drawable/next" />
+        android:background="@mipmap/next" />
 
 </RelativeLayout>

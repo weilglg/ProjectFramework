@@ -19,7 +19,7 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setMainTitleContent("测试标题栏");
-        setRightLayoutDrawable(R.drawable.icon_menu);
+        setRightLayoutDrawable(R.mipmap.icon_menu);
         setLeftLayoutString("返回");
         findViewById(R.id.id_btn).setOnClickListener(new View.OnClickListener() {
             @Override

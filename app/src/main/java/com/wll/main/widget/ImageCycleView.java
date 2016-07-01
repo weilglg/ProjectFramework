@@ -175,17 +175,17 @@ public class ImageCycleView extends RelativeLayout {
             if (i == 0) {
                 if (this.stype == 1)
                     mImageViews[i]
-                            .setImageResource(R.drawable.banner_dian_focus);
+                            .setImageResource(R.mipmap.banner_dian_focus);
                 else
                     mImageViews[i]
-                            .setImageResource(R.drawable.cicle_banner_dian_focus);
+                            .setImageResource(R.mipmap.cicle_banner_dian_focus);
             } else {
                 if (this.stype == 1)
                     mImageViews[i]
-                            .setImageResource(R.drawable.banner_dian_blur);
+                            .setImageResource(R.mipmap.banner_dian_blur);
                 else
                     mImageViews[i]
-                            .setImageResource(R.drawable.cicle_banner_dian_blur);
+                            .setImageResource(R.mipmap.cicle_banner_dian_blur);
             }
             mGroup.addView(mImageViews[i]);
 
@@ -301,18 +301,18 @@ public class ImageCycleView extends RelativeLayout {
         }
         if (stype == 1)
             mImageViews[selectorPosition]
-                    .setImageResource(R.drawable.banner_dian_focus);
+                    .setImageResource(R.mipmap.banner_dian_focus);
         else
             mImageViews[selectorPosition]
-                    .setImageResource(R.drawable.cicle_banner_dian_focus);
+                    .setImageResource(R.mipmap.cicle_banner_dian_focus);
         for (int i = 0; i < mImageViews.length; i++) {
             if (selectorPosition != i) {
                 if (stype == 1)
                     mImageViews[i]
-                            .setImageResource(R.drawable.banner_dian_blur);
+                            .setImageResource(R.mipmap.banner_dian_blur);
                 else
                     mImageViews[i]
-                            .setImageResource(R.drawable.cicle_banner_dian_blur);
+                            .setImageResource(R.mipmap.cicle_banner_dian_blur);
             }
         }
     }

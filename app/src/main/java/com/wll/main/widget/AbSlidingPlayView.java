@@ -142,7 +142,7 @@ public class AbSlidingPlayView extends LinearLayout {
 
 		mViewPager = new AbInnerViewPager(context);
 		// 手动创建的ViewPager,如果用fragment必须调用setId()方法设置一个id
-		mViewPager.setId(1985);
+		mViewPager.setId(getResources().getInteger(R.integer.id_viewPager));
 		// 导航的点
 		mNavLayoutParent = new LinearLayout(context);
 		mNavLayoutParent.setPadding(0, 5, 0, 5);
@@ -172,8 +172,8 @@ public class AbSlidingPlayView extends LinearLayout {
 //		displayImage = AbFileUtil.getBitmapFromSrc("image/play_display.png");
 //		hideImage = AbFileUtil.getBitmapFromSrc("image/play_hide.png");
 		
-		Bitmap bm=BitmapFactory.decodeResource(context.getResources(), R.drawable.d2);
-		Bitmap bm2=BitmapFactory.decodeResource(context.getResources(), R.drawable.d1);
+		Bitmap bm=BitmapFactory.decodeResource(context.getResources(), R.mipmap.d2);
+		Bitmap bm2=BitmapFactory.decodeResource(context.getResources(), R.mipmap.d1);
 		displayImage=bm;
 		hideImage=bm2;
 		
@@ -530,7 +530,7 @@ public class AbSlidingPlayView extends LinearLayout {
 	/**
 	 * 监听器.
 	 *
-	 * @see AbOnChangeEvent
+	 * @since  AbOnChangeEvent
 	 */
 	public interface AbOnChangeListener {
 
@@ -547,7 +547,7 @@ public class AbSlidingPlayView extends LinearLayout {
 	/**
 	 * 条目点击接口.
 	 *
-	 * @see AbOnItemClickEvent
+	 * @since AbOnItemClickEvent
 	 */
 	public interface AbOnItemClickListener {
 
@@ -563,7 +563,7 @@ public class AbSlidingPlayView extends LinearLayout {
 	/**
 	 * 滚动.
 	 *
-	 * @see AbOnScrollEvent
+	 * @since AbOnScrollEvent
 	 */
 	public interface AbOnScrollListener {
 
@@ -595,7 +595,7 @@ public class AbSlidingPlayView extends LinearLayout {
 	/**
 	 * 触摸屏幕接口.
 	 *
-	 * @see AbOnTouchEvent
+	 * @since AbOnTouchEvent
 	 */
 	public interface AbOnTouchListener {
 		/**

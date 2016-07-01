@@ -33,7 +33,7 @@ public class TagFlowLayoutActivity extends BaseActivity implements TagFlowLayout
     protected void initViews() {
         super.initViews();
         setMainTitleContent("TagFlowLayout");
-        setLeftLayoutDrawable(R.drawable.icon_return);
+        setLeftLayoutDrawable(R.mipmap.icon_return);
         tagFlowLayout = (TagFlowLayout) findViewById(R.id.tagFlowLayout);
     }
 

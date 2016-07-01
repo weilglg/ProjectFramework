@@ -52,7 +52,7 @@ public class SeePictureActivity extends BaseActivity {
         mViewPager = (ViewPager) findViewById(R.id.zoom_image_view_activity_viewpager);
         btn = (Button) findViewById(R.id.id_btn);
         setMainTitleContent("浏览图片");
-        setLeftLayoutDrawable(R.drawable.icon_return);
+        setLeftLayoutDrawable(R.mipmap.icon_return);
     }
 
     @Override

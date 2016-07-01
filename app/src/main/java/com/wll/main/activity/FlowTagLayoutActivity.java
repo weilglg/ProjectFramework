@@ -40,7 +40,7 @@ public class FlowTagLayoutActivity extends BaseActivity implements WaterfallWith
     protected void initViews() {
         super.initViews();
         setMainTitleContent("WaterfallWithDeleteView");
-        setLeftLayoutDrawable(R.drawable.icon_return);
+        setLeftLayoutDrawable(R.mipmap.icon_return);
         flowTagLayoutView = (WaterfallWithDeleteView) findViewById(R.id.flowTagLayoutView);
         initData();
         flowTagLayoutView.setTags(mTags);

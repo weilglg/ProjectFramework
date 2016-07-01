@@ -23,7 +23,7 @@ public class WebViewActivity extends BaseActivity {
     @Override
     protected void initViews() {
         super.initViews();
-        setLeftLayoutDrawable(R.drawable.icon_return);
+        setLeftLayoutDrawable(R.mipmap.icon_return);
         setMainTitleContent("二维码识别");
         View v = findViewById(R.id.layout_root);
         webView = (DiscernCodeWebView) findViewById(R.id.webView);

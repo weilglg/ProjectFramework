@@ -7,6 +7,6 @@
         android:id="@+id/mPlayImage"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@drawable/banner_load_img"
+        android:background="@mipmap/banner_load_img"
         android:scaleType="fitXY" />
 </RelativeLayout>
