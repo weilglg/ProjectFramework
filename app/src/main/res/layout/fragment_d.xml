@@ -59,10 +59,11 @@
                 <com.wll.main.widget.EdgeImageView
                     android:id="@+id/fragment_d_edgeImageView"
                     android:layout_width="70dp"
-                    android:scaleType="fitXY"
                     android:layout_height="70dp"
-                    android:layout_gravity="center_vertical"/>
+                    android:layout_gravity="center_vertical"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -83,9 +84,66 @@
                     android:id="@+id/fragment_d_revealTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:rtv_duration="2000"
+                    android:layout_gravity="center_vertical"
                     android:text="Holle Reveal Text !"
-                    android:layout_gravity="center_vertical"/>
+                    app:rtv_duration="2000"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="16dp"
+                    android:text="HorizontalProgressBarWithProgress"
+                    android:textColor="#000"
+                    android:textSize="16sp"/>
+
+                <com.wll.main.widget.HorizontalProgressBarWithProgress
+                    android:id="@+id/fragment_d_progressBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:padding="5dp"
+                    android:progress="50"/>
+
+                <com.wll.main.widget.HorizontalProgressBarWithProgress
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:padding="5dp"
+                    android:progress="40"
+                    app:progress_text_color="#44ff0000"
+                    app:progress_unreach_color="#eeeeee"/>
+
+                <com.wll.main.widget.HorizontalProgressBarWithProgress
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:padding="5dp"
+                    android:progress="100"
+                    app:progress_reach_color="#FFFF0000"
+                    app:progress_text_color="#FFFF0000"
+                    app:progress_unreach_color="#44FF0000"/>
+
+                <com.wll.main.widget.RoundProgressBarWithProgress
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:padding="5dp"
+                    android:progress="10"
+                    app:radius="20dp"
+                    app:progress_reach_color="#FFFF0000"
+                    app:progress_text_color="#FF000000"
+                    app:progress_unreach_color="#44CCCC"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

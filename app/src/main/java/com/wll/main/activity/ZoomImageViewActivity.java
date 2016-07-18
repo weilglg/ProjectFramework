@@ -26,7 +26,7 @@ public class ZoomImageViewActivity extends BaseActivity {
     protected void initViews() {
         super.initViews();
         setMainTitleContent("ZoomImageView");
-        setLeftLayoutDrawable(R.drawable.icon_return);
+        setLeftLayoutDrawable(R.mipmap.icon_return);
     }
 
     @Override

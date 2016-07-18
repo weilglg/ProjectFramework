@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="FlowLayout">
-        <attr name="horizontalSpacing" format="dimension" />
-        <attr name="verticalSpacing" format="dimension" />
+        <attr name="horizontalSpacing" format="dimension"/>
+        <attr name="verticalSpacing" format="dimension"/>
         <attr name="flow_orientation" format="enum">
-            <enum name="horizontal" value="0" />
-            <enum name="vertical" value="1" />
+            <enum name="horizontal" value="0"/>
+            <enum name="vertical" value="1"/>
         </attr>
-        <attr name="debugDraw" format="boolean" />
+        <attr name="debugDraw" format="boolean"/>
     </declare-styleable>
 
     <declare-styleable name="FlowLayout_LayoutParams">
-        <attr name="layout_newLine" format="boolean" />
-        <attr name="layout_horizontalSpacing" format="dimension" />
-        <attr name="layout_verticalSpacing" format="dimension" />
+        <attr name="layout_newLine" format="boolean"/>
+        <attr name="layout_horizontalSpacing" format="dimension"/>
+        <attr name="layout_verticalSpacing" format="dimension"/>
     </declare-styleable>
 
 
@@ -26,41 +26,41 @@
     <declare-styleable name="TabIndicator">
 
         <!-- 选中时字体的颜色 -->
-        <attr name="indicator_textColorNormal" format="color|reference" />
+        <attr name="indicator_textColorNormal" format="color|reference"/>
         <!-- 未选中时字体的颜色 -->
-        <attr name="indicator_textColorSelected" format="color|reference" />
+        <attr name="indicator_textColorSelected" format="color|reference"/>
         <!-- 字体离顶部的距离 -->
-        <attr name="indicator_textPaddingTop" format="dimension" />
+        <attr name="indicator_textPaddingTop" format="dimension"/>
         <!-- 字体离底部的距离 -->
-        <attr name="indicator_textPaddingBottom" format="dimension" />
+        <attr name="indicator_textPaddingBottom" format="dimension"/>
         <!-- 选中时字体的大小 -->
-        <attr name="indicator_textSizeNormal" format="dimension" />
+        <attr name="indicator_textSizeNormal" format="dimension"/>
         <!-- 未选中时字体的大小 -->
-        <attr name="indicator_textSizeSelected" format="dimension" />
+        <attr name="indicator_textSizeSelected" format="dimension"/>
         <!-- 下划线的颜色 -->
-        <attr name="indicator_underlineColor" format="color|reference" />
+        <attr name="indicator_underlineColor" format="color|reference"/>
         <!-- 下划线的显示状态 -->
-        <attr name="indicator_underlineVisibility" format="boolean" />
+        <attr name="indicator_underlineVisibility" format="boolean"/>
         <!-- 滑动条的高度 -->
-        <attr name="indicator_footerLineHeight" format="dimension" />
+        <attr name="indicator_footerLineHeight" format="dimension"/>
         <!-- 滑动条的颜色 -->
-        <attr name="indicator_footerColor" format="color|reference" />
+        <attr name="indicator_footerColor" format="color|reference"/>
         <!-- 滑动条的显示状态 -->
-        <attr name="indicator_footerLineVisibility" format="boolean" />
+        <attr name="indicator_footerLineVisibility" format="boolean"/>
         <!-- 滑动条所占Tab宽度的比值（2-9） -->
-        <attr name="indicator_footerLineWidthRatio" format="integer" />
+        <attr name="indicator_footerLineWidthRatio" format="integer"/>
         <!-- Tab被点击时的背景颜色 -->
-        <attr name="indicator_onTouchBackgroundColor" format="color|reference" />
+        <attr name="indicator_onTouchBackgroundColor" format="color|reference"/>
         <!-- Tab选中时的背景颜色 -->
-        <attr name="indicator_tabSelectedColor" format="color|reference" />
+        <attr name="indicator_tabSelectedColor" format="color|reference"/>
         <!-- Tab之间竖线的宽度 -->
-        <attr name="indicator_verticalLineWidth" format="dimension" />
+        <attr name="indicator_verticalLineWidth" format="dimension"/>
         <!-- Tab之间竖线的显示状态 -->
-        <attr name="indicator_verticalLineVisibility" format="boolean" />
+        <attr name="indicator_verticalLineVisibility" format="boolean"/>
         <!-- Tab之间竖线的颜色 -->
-        <attr name="indicator_verticalLineColor" format="color|reference" />
+        <attr name="indicator_verticalLineColor" format="color|reference"/>
         <!-- Tab之间竖线高度所占总高度的比值（2-9） -->
-        <attr name="indicator_verticalLineHeightRatio" format="integer" />
+        <attr name="indicator_verticalLineHeightRatio" format="integer"/>
     </declare-styleable>
 
     <declare-styleable name="TagFlowLayout">
@@ -71,12 +71,26 @@
     </declare-styleable>
 
     <declare-styleable name="CircleImageView">
-        <attr name="border_width" format="dimension" />
-        <attr name="border_color" format="color" />
+        <attr name="border_width" format="dimension"/>
+        <attr name="border_color" format="color"/>
     </declare-styleable>
 
     <declare-styleable name="RevealTextView">
-        <attr name="rtv_duration" format="integer" />
-        <attr name="android:text" />
+        <attr name="rtv_duration" format="integer"/>
+        <attr name="android:text"/>
+    </declare-styleable>
+
+    <declare-styleable name="HorizontalProgressBarWithProgress">
+        <attr name="progress_unreach_color" format="color"/>
+        <attr name="progress_unheight" format="dimension"/>
+        <attr name="progress_reach_color" format="color"/>
+        <attr name="progress_height" format="dimension"/>
+        <attr name="progress_text_color" format="color"/>
+        <attr name="progress_text_size" format="dimension"/>
+        <attr name="progress_text_offset" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="RoundProgressBarWithProgress">
+        <attr name="radius" format="dimension"/>
     </declare-styleable>
 </resources>

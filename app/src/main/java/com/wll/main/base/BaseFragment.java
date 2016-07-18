@@ -33,7 +33,6 @@ public abstract class BaseFragment extends Fragment {
      * 广告栏
      */
     private ImageCycleView bannerLayout;
-
     /**
      * 当前的Fragment是否可见
      */
@@ -56,6 +55,11 @@ public abstract class BaseFragment extends Fragment {
      */
     private boolean isFirstLoadBanner;
 
+    /**
+     * 是否是第一次加载
+     */
+    private boolean isFirstLoaderView = false;
+
     public BaseFragment() {
         layoutResID = getViewResId();
         view = null;
@@ -67,20 +71,23 @@ public abstract class BaseFragment extends Fragment {
         if (layoutResID != 0 && view == null) {
             view = loadContentView(layoutResID);
             isPrepared = true;
-        }
-        if (view != null) {
+            isFirstLoaderView = true;
+        } else if (view != null) {
             ViewGroup parent = (ViewGroup) view.getParent();
             if (parent != null) {
                 parent.removeView(view);
             }
+            isFirstLoaderView = false;
         }
         return view;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        initUI(view);
-        initListener();
+        if (view != null && isFirstLoaderView) {
+            initUI(view);
+            initListener();
+        }
     }
 
     @Override
@@ -111,7 +118,8 @@ public abstract class BaseFragment extends Fragment {
             if (!isFirstLoadBanner) {
                 ArrayList<String> list = getBannerUrlList();
                 ImageCycleView.ImageCycleViewListener imageCycleViewListener = getImageCycleViewListener();
-                bannerLayout.setImageResources(list, imageCycleViewListener, getAdIndicatorType(), getAdIndicatorPosition());
+                bannerLayout.setImageResources(list, imageCycleViewListener, getAdIndicatorType(),
+                        getAdIndicatorPosition());
                 isFirstLoadBanner = true;
             } else {
                 bannerLayout.startImageCycle();
@@ -247,9 +255,11 @@ public abstract class BaseFragment extends Fragment {
      * 隐藏软键盘
      */
     protected void hideSoftKeyboard() {
-        if (getActivity().getWindow().getAttributes().softInputMode != WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN) {
+        if (getActivity().getWindow().getAttributes().softInputMode != WindowManager.LayoutParams
+                .SOFT_INPUT_STATE_HIDDEN) {
             if (getActivity().getCurrentFocus() != null) {
-                InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Context
+                        .INPUT_METHOD_SERVICE);
                 inputMethodManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(),
                         InputMethodManager.HIDE_NOT_ALWAYS);
             }

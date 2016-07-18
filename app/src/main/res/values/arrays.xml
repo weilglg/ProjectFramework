@@ -6,6 +6,7 @@
         <item>TagWithDeleteButtonView</item>
         <item>ZoomImageView</item>
         <item>PromptDialog</item>
+        <item>HorizontalProgressBarWithProgress</item>
     </string-array>
 
     <string-array name="function_name">

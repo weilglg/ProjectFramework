@@ -1,10 +1,13 @@
 package com.wll.main.fragment;
 
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 
 import com.wll.main.R;
 import com.wll.main.base.BaseFragment;
+import com.wll.main.widget.HorizontalProgressBarWithProgress;
 import com.wll.main.widget.RevealTextView;
 import com.wll.main.widget.SwitchView;
 
@@ -15,6 +18,23 @@ public class FragmentD extends BaseFragment implements SwitchView.OnStateChanged
 
     private SwitchView mSwitchView;
     private RevealTextView mRevealTextView;
+    private HorizontalProgressBarWithProgress progressBar;
+
+    private static final int MSG_UPDATE = 0x100;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+//            if (msg.what == MSG_UPDATE) {
+                int progress = progressBar.getProgress();
+                progressBar.setProgress(++progress);
+                if (progress >= 100) {
+                    mHandler.removeMessages(MSG_UPDATE);
+                }
+                mHandler.sendEmptyMessageDelayed(MSG_UPDATE, 100);
+//            }
+        }
+    };
+
     @Override
     protected int getViewResId() {
         return R.layout.fragment_d;
@@ -24,6 +44,8 @@ public class FragmentD extends BaseFragment implements SwitchView.OnStateChanged
     protected void initViews(View v) {
         mSwitchView = (SwitchView) v.findViewById(R.id.fragment_d_switchView);
         mRevealTextView = (RevealTextView) v.findViewById(R.id.fragment_d_revealTextView);
+        progressBar = (HorizontalProgressBarWithProgress) v.findViewById(R.id.fragment_d_progressBar);
+        mHandler.sendEmptyMessage(100);
     }
 
     @Override
@@ -60,7 +82,7 @@ public class FragmentD extends BaseFragment implements SwitchView.OnStateChanged
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.fragment_d_revealTextView:
                 mRevealTextView.replayAnimation();
                 break;

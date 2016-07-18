@@ -1,6 +1,7 @@
 package com.wll.main.fragment;
 
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -34,6 +35,7 @@ public class FragmentA extends BaseFragment implements AdapterView.OnItemClickLi
 
     @Override
     protected void initViews(View v) {
+        Log.e("TAG", "-->>FragmentA initViews");
         mListView = (NoScrollListView) v.findViewById(R.id.fragment_a_listview);
     }
 
