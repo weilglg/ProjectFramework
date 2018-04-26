@@ -327,4 +327,7 @@ public class StringUtils {
         return result;
     }
 
+    public static boolean isEmpty(String str) {
+        return TextUtils.isEmpty(str) || "null".equals(str);
+    }
 }

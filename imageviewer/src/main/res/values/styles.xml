@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--全屏的 dialog 样式-->
+    <style name="style_dlg_fullscreen">
+        <!--无边框-->
+        <item name="android:windowFrame">@null</item>
+        <!--半透明-->
+        <item name="android:windowIsTranslucent">false</item>
+        <!--无标题-->
+        <item name="android:windowNoTitle">true</item>
+        <!--背景透明-->
+        <item name="android:windowBackground">@color/transparent</item>
+        <!--是否全屏-->
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+
+    <!-- 取消界面转场动画使用-->
+    <style name="NoAnimationTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:windowAnimationStyle">@style/Animation</item>
+    </style>
+
+    <style name="Animation">
+        <item name="android:activityOpenEnterAnimation">@null</item>
+        <item name="android:activityOpenExitAnimation">@null</item>
+        <item name="android:activityCloseEnterAnimation">@null</item>
+        <item name="android:activityCloseExitAnimation">@null</item>
+        <item name="android:taskOpenEnterAnimation">@null</item>
+        <item name="android:taskOpenExitAnimation">@null</item>
+        <item name="android:taskCloseEnterAnimation">@null</item>
+        <item name="android:taskCloseExitAnimation">@null</item>
+        <item name="android:taskToFrontEnterAnimation">@null</item>
+        <item name="android:taskToFrontExitAnimation">@null</item>
+        <item name="android:taskToBackEnterAnimation">@null</item>
+        <item name="android:taskToBackExitAnimation">@null</item>
+    </style>
+</resources>

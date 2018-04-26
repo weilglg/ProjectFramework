@@ -15,14 +15,14 @@
 
     <com.wll.main.widget.TabIndicatorView
         android:id="@+id/base_home_tab_indicator"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:background="@color/base_home_tab_background"
         app:indicator_onTouchBackgroundColor="@color/base_home_tab_onTouchColor"
         app:indicator_textColorNormal="@color/base_home_tab_textNormal"
         app:indicator_textColorSelected="@color/base_home_tab_textSelected"
-        app:indicator_textSizeNormal="14sp"
+        app:indicator_textPaddingBottom="10dp"
         app:indicator_textPaddingTop="10dp"
-        app:indicator_textPaddingBottom="10dp"/>
+        app:indicator_textSizeNormal="14sp" />
 </RelativeLayout>

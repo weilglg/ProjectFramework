@@ -93,4 +93,19 @@
     <declare-styleable name="RoundProgressBarWithProgress">
         <attr name="radius" format="dimension"/>
     </declare-styleable>
+
+
+    <!--九宫格图片-->
+    <declare-styleable name="GridImageView">
+        <attr name="vertical_spacing" format="dimension"/>
+        <attr name="horizontal_spacing" format="dimension"/>
+        <attr name="add_icon" format="reference"/>
+        <attr name="remove_icon" format="reference"/>
+        <attr name="max_num" format="integer"/>
+        <attr name="num_columns" format="integer"/>
+        <attr name="mode">
+            <enum name="normal" value="1"/>
+            <enum name="big" value="2"/>
+        </attr>
+    </declare-styleable>
 </resources>

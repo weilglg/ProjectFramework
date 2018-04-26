@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <integer name="id_viewPager">1985</integer>
+    <item name="delete_image" type="id">delete_image</item>
+    <item name="add_image" type="id">add_image</item>
 </resources>

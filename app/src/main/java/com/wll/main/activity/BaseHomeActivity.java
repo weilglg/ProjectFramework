@@ -61,6 +61,7 @@ public class BaseHomeActivity extends BaseIndicatorActivity {
         }
     }
 
+
     @Override
     protected void onViewPagerSwitch(int index, Fragment fragment) {
         String mainTitle = "";

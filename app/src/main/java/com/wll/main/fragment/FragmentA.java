@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.wll.main.R;
 import com.wll.main.activity.FlowTagLayoutActivity;
+import com.wll.main.activity.NineGridActivity;
 import com.wll.main.activity.ObservableScrollViewActivity;
 import com.wll.main.activity.TagFlowLayoutActivity;
 import com.wll.main.activity.ZoomImageViewActivity;
@@ -118,7 +119,9 @@ public class FragmentA extends BaseFragment implements AdapterView.OnItemClickLi
                 PromptDialogView dialogView = new PromptDialogView();
                 FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
                 dialogView.show(fragmentTransaction, "tag");
-
+                break;
+            case 5:
+                toActivity(NineGridActivity.class);
                 break;
         }
     }
