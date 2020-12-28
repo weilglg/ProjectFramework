@@ -3,10 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ProjectFramework.iml" filepath="$PROJECT_DIR$/ProjectFramework.iml" />
-      <module fileurl="file://D:\AndroidProject\ProjectFramework\ProjectFrameworkNew.iml" filepath="D:\AndroidProject\ProjectFramework\ProjectFrameworkNew.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/imageviewer/imageviewer.iml" filepath="$PROJECT_DIR$/imageviewer/imageviewer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/okhttputils/okhttputils.iml" filepath="$PROJECT_DIR$/okhttputils/okhttputils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ProjectFramework.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ProjectFramework.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/imageviewer/ProjectFramework.imageviewer.iml" filepath="$PROJECT_DIR$/.idea/modules/imageviewer/ProjectFramework.imageviewer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/okhttputils/ProjectFramework.okhttputils.iml" filepath="$PROJECT_DIR$/.idea/modules/okhttputils/ProjectFramework.okhttputils.iml" />
     </modules>
   </component>
 </project>

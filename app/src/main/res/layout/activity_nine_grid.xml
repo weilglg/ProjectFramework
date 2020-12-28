@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:nine="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.wll.main.activity.NineGridActivity">
+
+    <com.wll.main.widget.nineGridLayout.NineGridLayout
+        android:id="@+id/nine_grid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        nine:horizontal_spacing="10dp"
+        nine:max_num="9"
+        nine:mode="normal"
+        nine:num_columns="3"
+        nine:vertical_spacing="10dp"/>
+
+</RelativeLayout>
